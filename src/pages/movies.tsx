@@ -1,3 +1,11 @@
+import { Layout } from "@/components/Layout/Layout";
+
 export default function Movies() {
-  return <h2>List of Movies</h2>;
+  return (
+    <Layout>
+      <main className="min-h-screen">
+        <h2>Movies</h2>
+      </main>
+    </Layout>
+  );
 }

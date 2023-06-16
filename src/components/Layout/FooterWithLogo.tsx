@@ -1,8 +1,11 @@
+const date = new Date();
+const year = date.getFullYear();
+
 export default function FooterWithLogo() {
   return (
     <footer className="footer footer-center p-4 bg-base-300 text-base-content">
       <div>
-        <p>Copyright © 2023 - All right reserved by ACME Industries Ltd</p>
+        <p>Copyright © {year} - All right reserved by Watch That</p>
       </div>
     </footer>
   );
