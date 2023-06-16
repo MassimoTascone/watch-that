@@ -2,11 +2,9 @@ import Link from "next/link";
 
 export function NavBar() {
   return (
-    <div className="navbar bg-base-100">
+    <nav className="navbar text-white">
       <div className="flex-1">
-        <Link href={"/"} className="btn btn-ghost normal-case text-xl">
-          WatchThat
-        </Link>
+        <Link href={"/"} className="btn btn-ghost normal-case text-xl"></Link>
       </div>
       <div>
         <input placeholder="Search..." className="input input-bordered" />
@@ -34,7 +32,7 @@ export function NavBar() {
           <li>
             <details>
               <summary>Tv Shows</summary>
-              <ul className="p-2 bg-base-100">
+              <ul className="p-2">
                 <li>
                   <a>Popular Shows</a>
                 </li>
@@ -49,6 +47,6 @@ export function NavBar() {
           </li>
         </ul>
       </div>
-    </div>
+    </nav>
   );
 }
