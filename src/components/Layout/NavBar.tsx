@@ -4,7 +4,9 @@ export function NavBar() {
   return (
     <nav className="navbar text-white">
       <div className="flex-1">
-        <Link href={"/"} className="btn btn-ghost normal-case text-xl"></Link>
+        <Link href={"/"} className="btn btn-ghost normal-case text-xl">
+          WatchThat
+        </Link>
       </div>
       <div>
         <input placeholder="Search..." className="input input-bordered" />
