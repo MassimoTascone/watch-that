@@ -1,6 +1,6 @@
 import Image from "next/image";
 export function HeroBanner(moviesData) {
-  const bannerImg = `https://image.tmdb.org/t/p/original/${moviesData.moviesData.results[2].backdrop_path}`;
+  const bannerImg = `https://image.tmdb.org/t/p/original/${moviesData.moviesData.results[3].backdrop_path}`;
   console.log(bannerImg);
 
   return (
