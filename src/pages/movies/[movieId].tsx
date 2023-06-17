@@ -1,12 +1,17 @@
 import { Layout } from "@/components/Layout/Layout";
 import Image from "next/image";
+import {
+  formatDate,
+  formatDuration,
+  formatPrice,
+} from "@/utils/formattingHelpers";
 
 export default function MovieDetails({ movieDetailsData, creditData }) {
   console.log(movieDetailsData);
   console.log(creditData);
 
   const imageUrl = movieDetailsData?.poster_path;
-  const bgImg = `https://image.tmdb.org/t/p/original/${movieDetailsData.backdrop_path}`;
+  const bgImg = `https://image.tmdb.org/t/p/original/${movieDetailsData?.backdrop_path}`;
 
   return (
     <Layout>
@@ -27,32 +32,59 @@ export default function MovieDetails({ movieDetailsData, creditData }) {
             height={300}
             alt={movieDetailsData.title}
             priority={true}
-            className="rounded-lg"
+            className="rounded-lg drop-shadow-md"
           />
         </div>
         <div className="p-3 mt-10">
           <h2 className="text-3xl font-sans font-extrabold ">
             {movieDetailsData.title}
+            <span className="ml-2 font-extralight">
+              ({formatDate(movieDetailsData?.release_date)})
+            </span>
           </h2>
-          <p className="font-sm">
-            Original title: {movieDetailsData.original_title}
+          <p className="font-sm italic font-extralight">
+            Original title: {movieDetailsData?.original_title}
           </p>
           <div className="flex items-center gap-3 mt-10">
-            <p className="">Movie ({movieDetailsData.release_date}) &#x2022;</p>
-            <p>{movieDetailsData.runtime} min</p>
+            <p className="">Movie &#x2022; </p>
+            <p>{formatDuration(movieDetailsData.runtime)}</p>
           </div>
-          <p className="mt-10 text-sm leading-loose">
-            {movieDetailsData.overview}
+          <p className="mt-10 text-base leading-loose	">
+            {movieDetailsData?.overview}
           </p>
           <div>
-            <h3>Details</h3>
-            <p>Genre</p>
+            <h3 className="font-bold text-2xl mt-10 mb-5">Details</h3>
+            <div className="flex items-center">
+              <h4>Genres</h4>
+              <div className="ml-10 flex gap-3">
+                {movieDetailsData?.genres.map((genre) => (
+                  <div className="badge badge-neutral truncate" key={genre.id}>
+                    {genre.name}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <hr className="border-slate-700 my-2" />
+            <div className="flex items-center mb-2">
+              <h4>Budget</h4>
+              <div className="ml-10 flex gap-3">
+                <p>{formatPrice(movieDetailsData?.budget)}</p>
+              </div>
+            </div>
+            <hr className="border-slate-700 my-2" />
+            <div className="flex items-center mb-2">
+              <h4>Revenue</h4>
+              <div className="ml-10 flex gap-3">
+                <p>{formatPrice(movieDetailsData?.revenue)}</p>
+              </div>
+            </div>
+            <hr className="border-slate-700 my-2" />
           </div>
         </div>
         <div className="p-3 ml-20 mt-10">
           <h2 className="font-bold text-2xl">Cast and Crew:</h2>
           <ul>
-            {creditData.cast.slice(0, 10).map((actor) => (
+            {creditData?.cast?.slice(0, 10).map((actor) => (
               <li key={actor.id} className="flex items-center my-4">
                 <div className="avatar">
                   <div className="w-12 rounded-full">
