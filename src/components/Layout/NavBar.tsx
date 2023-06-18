@@ -1,11 +1,20 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export function NavBar() {
   return (
     <nav className="navbar text-white">
       <div className="flex-1">
-        <Link href={"/"} className="btn btn-ghost normal-case text-xl">
-          WatchThat
+        <Link
+          href={"/"}
+          className="btn btn-ghost normal-case text-xl hover:bg-transparent p-0"
+        >
+          <Image
+            src="/watchthat-logo.svg"
+            width={220}
+            height={220}
+            alt="watchthat logo svg"
+          />
         </Link>
       </div>
       <div>

@@ -24,64 +24,79 @@ export default function MovieDetails({ movieDetailsData, creditData }) {
           className="absolute top-0 left-0 -z-10 w-full brightness-50"
         />
       </section>
-      <section className="min-h-screen text-white grid grid-cols-3 grid-row-1 mx-12 mb-20 mt-40 justify-center">
-        <div className="place-items-center">
+
+      <section className="min-h-screen text-white grid grid-cols-[1fr,2fr,1fr] grid-row-1 mx-12 mb-20 mt-40 justify-center">
+        <div className="flex justify-center items-start">
           <Image
             src={`https://image.tmdb.org/t/p/w500/${imageUrl}`}
             width={300}
             height={300}
             alt={movieDetailsData.title}
             priority={true}
-            className="rounded-lg drop-shadow-md"
+            className="rounded-lg drop-shadow-lg"
           />
         </div>
-        <div className="p-3 mt-10">
-          <h2 className="text-3xl font-sans font-extrabold ">
-            {movieDetailsData.title}
-            <span className="ml-2 font-extralight">
-              ({formatDate(movieDetailsData?.release_date)})
-            </span>
-          </h2>
-          <p className="font-sm italic font-extralight">
-            Original title: {movieDetailsData?.original_title}
-          </p>
-          <div className="flex items-center gap-3 mt-10">
-            <p className="">Movie &#x2022; </p>
-            <p>{formatDuration(movieDetailsData.runtime)}</p>
+
+        <div className="p-3 mt-10 ml-10">
+          <div>
+            <h2 className="text-3xl font-sans font-extrabold ">
+              {movieDetailsData.title}
+              <span className="ml-2 font-extralight">
+                ({formatDate(movieDetailsData?.release_date)})
+              </span>
+            </h2>
+            <p className="font-sm italic font-extralight">
+              Original title: {movieDetailsData?.original_title}
+            </p>
+            <div className="flex items-center gap-3 mt-10">
+              <p>Movie&nbsp; &#x2022; </p>
+              <p>{formatDuration(movieDetailsData.runtime)}</p>
+            </div>
+            <p className="mt-10 text-base leading-loose	">
+              {movieDetailsData?.overview}
+            </p>
           </div>
-          <p className="mt-10 text-base leading-loose	">
-            {movieDetailsData?.overview}
-          </p>
+
           <div>
             <h3 className="font-bold text-2xl mt-10 mb-5">Details</h3>
-            <div className="flex items-center">
-              <h4>Genres</h4>
-              <div className="ml-10 flex gap-3">
+            <div className="grid grid-cols-3 grid-rows-3 divide-slate-700">
+              <div className="grid-span-1 p-2 divie-y">
+                <h4>Genres</h4>
+              </div>
+              <div className="flex gap-3 col-span-2 p-2">
                 {movieDetailsData?.genres.map((genre) => (
                   <div className="badge badge-neutral truncate" key={genre.id}>
                     {genre.name}
                   </div>
                 ))}
               </div>
-            </div>
-            <hr className="border-slate-700 my-2" />
-            <div className="flex items-center mb-2">
-              <h4>Budget</h4>
-              <div className="ml-10 flex gap-3">
-                <p>{formatPrice(movieDetailsData?.budget)}</p>
+
+              <div className="grid-span-1 p-2">
+                <h4>Budget</h4>
+              </div>
+              <div className=" gap-3 col-span-2 p-2">
+                <p className="font-extralight">
+                  {movieDetailsData.budget === 0
+                    ? "Unknown"
+                    : formatPrice(movieDetailsData?.budget)}
+                </p>
+              </div>
+
+              <div className="grid-span-1 p-2">
+                <h4>Revenue</h4>
+              </div>
+              <div className="col-span-2 p-2">
+                <p className="font-extralight">
+                  {movieDetailsData.revenue === 0
+                    ? "Unknown"
+                    : formatPrice(movieDetailsData?.revenue)}
+                </p>
               </div>
             </div>
-            <hr className="border-slate-700 my-2" />
-            <div className="flex items-center mb-2">
-              <h4>Revenue</h4>
-              <div className="ml-10 flex gap-3">
-                <p>{formatPrice(movieDetailsData?.revenue)}</p>
-              </div>
-            </div>
-            <hr className="border-slate-700 my-2" />
           </div>
         </div>
-        <div className="p-3 ml-20 mt-10">
+
+        <div className="p-3 ml-10 mt-10">
           <h2 className="font-bold text-2xl">Cast and Crew:</h2>
           <ul>
             {creditData?.cast?.slice(0, 10).map((actor) => (
@@ -112,31 +127,6 @@ export default function MovieDetails({ movieDetailsData, creditData }) {
     </Layout>
   );
 }
-
-// export async function getServerSideProps(context) {
-//   console.log(context.query);
-//   const { movieId } = context.query;
-
-//   try {
-//     const res = await fetch(
-//       `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.API_KEY}`
-//     );
-//     const movieDetails = await res.json();
-
-//     return {
-//       props: {
-//         movieDetails,
-//       },
-//     };
-//   } catch (error) {
-//     console.log("Error fetching movie data:", error);
-//     return {
-//       props: {
-//         movieDetails: null,
-//       },
-//     };
-//   }
-// }
 
 export const getServerSideProps = async (context) => {
   console.log(context.query);
