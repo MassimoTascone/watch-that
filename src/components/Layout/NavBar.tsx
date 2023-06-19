@@ -7,7 +7,7 @@ export function NavBar() {
       <div className="flex-1">
         <Link
           href={"/"}
-          className="btn btn-ghost normal-case text-xl hover:bg-transparent p-0"
+          className="btn btn-ghost normal-case text-xl hover:bg-transparent pl-[16px]"
         >
           <Image
             src="/watchthat-logo.svg"
@@ -26,32 +26,7 @@ export function NavBar() {
             <Link href={"/movies"}>Movies</Link>
           </li>
           <li>
-            <details>
-              <summary>
-                <Link href={"/movies"}>Movies</Link>
-              </summary>
-              <ul className="p-2 bg-base-100">
-                <li>
-                  <a>Email</a>
-                </li>
-                <li>
-                  <a>Other</a>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <details>
-              <summary>Tv Shows</summary>
-              <ul className="p-2">
-                <li>
-                  <a>Popular Shows</a>
-                </li>
-                <li>
-                  <a>Upcoming Shows</a>
-                </li>
-              </ul>
-            </details>
+            <Link href={"/"}>Tv-Shows</Link>
           </li>
           <li>
             <Link href={"/"}>About</Link>

@@ -6,12 +6,20 @@ import {
   formatPrice,
 } from "@/utils/formattingHelpers";
 
-export default function MovieDetails({ movieDetailsData, creditData }) {
+export default function MovieDetails({
+  movieDetailsData,
+  creditData,
+  imagesData,
+}) {
   console.log(movieDetailsData);
   console.log(creditData);
+  console.log(imagesData);
 
   const imageUrl = movieDetailsData?.poster_path;
-  const bgImg = `https://image.tmdb.org/t/p/original/${movieDetailsData?.backdrop_path}`;
+  const bgImg = `https://image.tmdb.org/t/p/w780/${movieDetailsData?.backdrop_path}`;
+  const englishOnlyImages = imagesData.backdrops.filter(
+    (image) => image.iso_639_1 === "en" || image.iso_639_1 === null
+  );
 
   return (
     <Layout>
@@ -25,7 +33,7 @@ export default function MovieDetails({ movieDetailsData, creditData }) {
         />
       </section>
 
-      <section className="min-h-screen text-white grid grid-cols-[1fr,2fr,1fr] grid-row-1 mx-12 mb-20 mt-40 justify-center">
+      <section className="min-h-screen text-white grid grid-cols-[1fr,2fr,1fr] grid-row-1 justify-center mx-12 mb-20 mt-40">
         <div className="flex justify-center items-start">
           <Image
             src={`https://image.tmdb.org/t/p/w500/${imageUrl}`}
@@ -124,6 +132,30 @@ export default function MovieDetails({ movieDetailsData, creditData }) {
           </ul>
         </div>
       </section>
+
+      <section className="mx-12 mb-20">
+        <h3 className="font-bold text-2xl mb-4 text-white">Photos</h3>
+        <div className="flex w-full justify-center">
+          <div className="carousel carousel-center max-w-[90rem] space-x-4 rounded-box">
+            {englishOnlyImages.map((image, index) => (
+              <div key={index} className="carousel-item h-[270px]">
+                <a
+                  href={`https://image.tmdb.org/t/p/w780/${image.file_path}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    alt="img"
+                    src={`https://image.tmdb.org/t/p/w780/${image.file_path}`}
+                    width={500}
+                    height={300}
+                  />
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </Layout>
   );
 }
@@ -133,25 +165,31 @@ export const getServerSideProps = async (context) => {
   const { movieId } = context.query;
 
   try {
-    const [creditRes, movieDetailsRes] = await Promise.all([
+    const [creditRes, movieDetailsRes, imagesRes] = await Promise.all([
       fetch(
         `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${process.env.API_KEY}`
       ),
       fetch(
         `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.API_KEY}`
       ),
+      fetch(
+        `https://api.themoviedb.org/3/movie/${movieId}/images?api_key=${process.env.API_KEY}`
+      ),
     ]);
 
     const creditData = await creditRes.json();
     const movieDetailsData = await movieDetailsRes.json();
+    const imagesData = await imagesRes.json();
 
-    console.log({ creditData, movieDetailsData });
+    console.log({ creditData, movieDetailsData, imagesData });
 
-    return { props: { creditData, movieDetailsData } };
+    return {
+      props: { creditData, movieDetailsData, imagesData },
+    };
   } catch (error) {
     console.log("Error fetching movie data:", error);
     return {
-      props: { creditData: null, movieDetailsData: null },
+      props: { creditData: null, movieDetailsData: null, imagesData: null },
     };
   }
 };
