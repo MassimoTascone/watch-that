@@ -1,5 +1,6 @@
-import { Layout } from "@/components/Layout/Layout";
 import Image from "next/image";
+import { Layout } from "@/components/Layout/Layout";
+import { DisplayCasting } from "@/components/displayCasting";
 import {
   formatDate,
   formatDuration,
@@ -11,15 +12,12 @@ export default function MovieDetails({
   creditData,
   imagesData,
 }) {
-  console.log(movieDetailsData);
-  console.log(creditData);
-  console.log(imagesData);
-
   const imageUrl = movieDetailsData?.poster_path;
   const bgImg = `https://image.tmdb.org/t/p/w780/${movieDetailsData?.backdrop_path}`;
   const englishOnlyImages = imagesData.backdrops.filter(
     (image) => image.iso_639_1 === "en" || image.iso_639_1 === null
   );
+  console.log(movieDetailsData);
 
   return (
     <Layout>
@@ -35,7 +33,7 @@ export default function MovieDetails({
       </section>
 
       <section className="min-h-screen text-white grid grid-cols-[1fr,2fr,1fr] grid-row-1 justify-center mx-12 mt-40">
-        <div className="flex justify-center items-start">
+        <div className="flex justify-center items-start flex-col">
           <Image
             src={`https://image.tmdb.org/t/p/w500/${imageUrl}`}
             width={300}
@@ -44,6 +42,27 @@ export default function MovieDetails({
             priority={true}
             className="rounded-lg drop-shadow-lg"
           />
+          <div className="flex items-center w-full ">
+            <div
+              className="radial-progress text-white m-2"
+              style={{ "--value": movieDetailsData.vote_average * 10 }}
+            >
+              {Math.round(movieDetailsData.vote_average * 10) / 10}
+            </div>
+            <div
+              className="
+            ml-5"
+            >
+              <p>
+                {movieDetailsData?.vote_average}{" "}
+                <span className="font-extralight">ratings</span>
+              </p>
+              <p>
+                {movieDetailsData?.vote_count}{" "}
+                <span className="font-extralight">reviews</span>
+              </p>
+            </div>
+          </div>
         </div>
 
         <div className="p-3 mt-10 ml-10">
@@ -104,34 +123,7 @@ export default function MovieDetails({
             </div>
           </div>
         </div>
-
-        <div className="p-3 ml-10 mt-10">
-          <h2 className="font-bold text-2xl">Cast and Crew:</h2>
-          <ul>
-            {creditData?.cast?.slice(0, 10).map((actor) => (
-              <li key={actor.id} className="flex items-center my-4">
-                <div className="avatar">
-                  <div className="w-12 rounded-full">
-                    <Image
-                      src={`https://image.tmdb.org/t/p/w154/${actor.profile_path}`}
-                      width={40}
-                      height={40}
-                      alt={actor.name}
-                      priority={true}
-                    />
-                  </div>
-                </div>
-                <div className="ml-3">
-                  <p className="font-bold">{actor.name}</p>
-                  <p className="text-sm font-light italic">
-                    as {actor.character}
-                  </p>
-                </div>
-              </li>
-            ))}
-            <li>...</li>
-          </ul>
-        </div>
+        <DisplayCasting castingList={creditData.cast} />
       </section>
 
       <section className="mx-12 mb-20">
