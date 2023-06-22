@@ -9,7 +9,7 @@ export const formatDuration = (movieDuration: number) => {
   return `${hours}h ${minutes}m`;
 };
 
-export const formatPrice = (uglyPrice) => {
+export const formatPrice = (uglyPrice: number) => {
   const USDollar = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",

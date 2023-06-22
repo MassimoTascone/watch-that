@@ -1,31 +1,30 @@
 import { Layout } from "@/components/Layout/Layout";
-import { MediaListDisplay } from "@/components/MediaListDisplay";
 import { useState } from "react";
+import { MediaListDisplay } from "@/components/MediaListDisplay";
 import { fetchMoreMedia } from "@/utils/loadMoreMediaHelper";
 
-export default function Movies({ allMoviesData }) {
-  const [movies, setMovies] = useState(allMoviesData?.results);
+export default function TvShows({ alltvShowsData }) {
+  const [tvShows, setTvShows] = useState(alltvShowsData?.results);
   const [page, setPage] = useState(1);
 
-  console.log(allMoviesData);
-  console.log(page);
+  console.log(alltvShowsData);
   return (
     <Layout>
       <section className="min-h-screen mb-20">
         <div>
           <h2 className="text-center font-bold text-white text-2xl mb-4">
-            All Movies
+            All Tv Shows
           </h2>
-          <MediaListDisplay mediaData={movies} mediaType={"movies"} />
+          <MediaListDisplay mediaData={tvShows} mediaType={"tvshows"} />
           <div className="flex justify-center">
             <button
               className="btn btn-outline btn-accent"
               onClick={() =>
                 fetchMoreMedia({
                   page,
-                  setterMedia: setMovies,
+                  setterMedia: setTvShows,
                   setterPage: setPage,
-                  apiRoute: "getMovies",
+                  apiRoute: "getTvShows",
                 })
               }
             >
@@ -41,21 +40,21 @@ export default function Movies({ allMoviesData }) {
 export const getServerSideProps = async (context) => {
   const { page } = context.query;
   try {
-    const resAllMovies = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&api_key=${process.env.API_KEY}`
+    const resAlltvShows = await fetch(
+      `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=vote_count.desc&api_key=${process.env.API_KEY}`
     );
-    const allMoviesData = await resAllMovies.json();
+    const alltvShowsData = await resAlltvShows.json();
 
     return {
       props: {
-        allMoviesData,
+        alltvShowsData,
       },
     };
   } catch (error) {
     console.log("Error fetching movie data:", error);
     return {
       props: {
-        allMoviesData: null,
+        alltvShowsData: null,
       },
     };
   }
