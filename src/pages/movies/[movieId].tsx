@@ -30,10 +30,11 @@ export default function MovieDetails({
           alt="bg-img"
           fill
           className="absolute top-0 left-0 -z-10 w-full brightness-50"
+          priority={true}
         />
       </section>
 
-      <section className="min-h-screen text-white grid grid-cols-[1fr,2fr,1fr] grid-row-1 justify-center mx-12 mb-20 mt-40">
+      <section className="min-h-screen text-white grid grid-cols-[1fr,2fr,1fr] grid-row-1 justify-center mx-12 mt-40">
         <div className="flex justify-center items-start">
           <Image
             src={`https://image.tmdb.org/t/p/w500/${imageUrl}`}
@@ -149,6 +150,7 @@ export default function MovieDetails({
                     src={`https://image.tmdb.org/t/p/w780/${image.file_path}`}
                     width={500}
                     height={300}
+                    priority={true}
                   />
                 </a>
               </div>

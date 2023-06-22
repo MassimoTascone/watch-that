@@ -19,13 +19,13 @@ export default function DisplayMovies(moviesData) {
 
   return (
     <div className="mb-8">
-      <h2 className="text-2xl font-sans ont-bold text-white mb-4">
+      <h2 className="text-2xl font-sans font-bold text-white mb-4">
         {moviesData.title}
       </h2>
       <section>
         <div>
           <div className="carousel rounded-box gap-3">
-            {movies?.map((movie, key) => (
+            {movies?.map((movie) => (
               <div className="carousel-item" key={movie.id}>
                 <Link href={`movies/${movie.id}`}>
                   <div

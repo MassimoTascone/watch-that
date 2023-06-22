@@ -26,7 +26,7 @@ export function NavBar() {
             <Link href={"/movies"}>Movies</Link>
           </li>
           <li>
-            <Link href={"/"}>Tv-Shows</Link>
+            <Link href={"/tvshows"}>Tv-Shows</Link>
           </li>
           <li>
             <Link href={"/"}>About</Link>
