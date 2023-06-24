@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import DisplayMovies from "@/components/DisplayMovies";
 import { Layout } from "@/components/Layout/Layout";
 import { HeroBanner } from "@/components/HeroBanner";
+import { ModalSearch } from "@/components/ModalSearch";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,6 +14,7 @@ export default function Home(initialData) {
         <main
           className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
         >
+          <ModalSearch />
           <DisplayMovies
             moviesData={initialData.popularData}
             title={"Popular right now"}

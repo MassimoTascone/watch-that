@@ -76,7 +76,7 @@ export default function MovieDetails({
                 <h4>Genres</h4>
               </div>
               <div className="flex gap-3 col-span-2 p-2">
-                {tvDetailsData?.genres.map((genre) => (
+                {tvDetailsData?.genres?.map((genre) => (
                   <div className="badge badge-neutral truncate" key={genre.id}>
                     {genre.name}
                   </div>
@@ -88,7 +88,7 @@ export default function MovieDetails({
               </div>
               <div className=" gap-3 col-span-2 p-2">
                 <p className="font-extralight">
-                  {tvDetailsData?.created_by.slice(0, 3).map((creator) => (
+                  {tvDetailsData?.created_by?.slice(0, 3).map((creator) => (
                     <span className="ml-3" key={creator.id}>
                       {creator.name}
                     </span>
@@ -102,7 +102,7 @@ export default function MovieDetails({
               <div className="col-span-2 p-2">
                 <p className="font-extralight">
                   {tvDetailsData?.production_companies
-                    .slice(0, 2)
+                    ?.slice(0, 2)
                     .map((producer) => (
                       <span className="ml-3" key={producer.id}>
                         {producer.name},
