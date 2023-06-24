@@ -1,7 +1,7 @@
 
 import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async function moviesHandler(
+export default async function tvShowsHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
