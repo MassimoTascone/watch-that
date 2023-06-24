@@ -1,6 +1,7 @@
 import { Layout } from "@/components/Layout/Layout";
+import { useState } from "react";
 import Image from "next/image";
-import { formatDate, formatPrice } from "@/utils/formattingHelpers";
+import { formatDate } from "@/utils/formattingHelpers";
 import { DisplayCasting } from "@/components/displayCasting";
 
 export default function MovieDetails({
