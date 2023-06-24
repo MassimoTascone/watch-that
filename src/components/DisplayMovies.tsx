@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { ShowMediaInfos } from "./ShowMediaInfos";
 
 export default function DisplayMovies(moviesData) {
-  console.log(moviesData);
   const [hoveredMovieId, setHoveredMovieId] = useState(null);
 
   const handleMouseOver = (movieId) => {
@@ -40,19 +40,11 @@ export default function DisplayMovies(moviesData) {
                       height={200}
                       className="hover:brightness-50"
                     />
-                    {hoveredMovieId === movie.id && (
-                      <>
-                        <div className="absolute bottom-1 left-2  text-white bg-pink">
-                          <div className="font-sans font-bold">
-                            {movie.title}
-                          </div>
-                        </div>
-
-                        <div className="badge badge-accent absolute top-2 right-1 font-bold">
-                          {movie.vote_average}
-                        </div>
-                      </>
-                    )}
+                    <ShowMediaInfos
+                      mediaData={movie}
+                      movieId={movie.id}
+                      hoveredMovieId={hoveredMovieId}
+                    />
                   </div>
                 </Link>
               </div>

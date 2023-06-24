@@ -1,14 +1,12 @@
+import { useState } from "react";
 import { Layout } from "@/components/Layout/Layout";
 import { MediaListDisplay } from "@/components/MediaListDisplay";
-import { useState } from "react";
 import { fetchMoreMedia } from "@/utils/loadMoreMediaHelper";
 
 export default function Movies({ allMoviesData }) {
   const [movies, setMovies] = useState(allMoviesData?.results);
   const [page, setPage] = useState(1);
 
-  console.log(allMoviesData);
-  console.log(page);
   return (
     <Layout>
       <section className="min-h-screen mb-20">

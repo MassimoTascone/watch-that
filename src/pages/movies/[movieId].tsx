@@ -14,7 +14,7 @@ export default function MovieDetails({
 }) {
   const imageUrl = movieDetailsData?.poster_path;
   const bgImg = `https://image.tmdb.org/t/p/w780/${movieDetailsData?.backdrop_path}`;
-  const englishOnlyImages = imagesData.backdrops.filter(
+  const englishOnlyImages = imagesData?.backdrops?.filter(
     (image) => image.iso_639_1 === "en" || image.iso_639_1 === null
   );
   console.log(movieDetailsData);
@@ -47,12 +47,9 @@ export default function MovieDetails({
               className="radial-progress text-white m-2"
               style={{ "--value": movieDetailsData.vote_average * 10 }}
             >
-              {Math.round(movieDetailsData.vote_average * 10) / 10}
+              {Math.round(movieDetailsData?.vote_average * 10) / 10}
             </div>
-            <div
-              className="
-            ml-5"
-            >
+            <div className="ml-5">
               <p>
                 {movieDetailsData?.vote_average}{" "}
                 <span className="font-extralight">ratings</span>
@@ -68,7 +65,7 @@ export default function MovieDetails({
         <div className="p-3 mt-10 ml-10">
           <div>
             <h2 className="text-3xl font-sans font-extrabold ">
-              {movieDetailsData.title}
+              {movieDetailsData?.title}
               <span className="ml-2 font-extralight">
                 ({formatDate(movieDetailsData?.release_date)})
               </span>
@@ -78,7 +75,7 @@ export default function MovieDetails({
             </p>
             <div className="flex items-center gap-3 mt-10">
               <p>Movie&nbsp; &#x2022; </p>
-              <p>{formatDuration(movieDetailsData.runtime)}</p>
+              <p>{formatDuration(movieDetailsData?.runtime)}</p>
             </div>
             <p className="mt-10 text-base leading-loose	">
               {movieDetailsData?.overview}
@@ -92,7 +89,7 @@ export default function MovieDetails({
                 <h4>Genres</h4>
               </div>
               <div className="flex gap-3 col-span-2 p-2">
-                {movieDetailsData?.genres.map((genre) => (
+                {movieDetailsData?.genres?.map((genre) => (
                   <div className="badge badge-neutral truncate" key={genre.id}>
                     {genre.name}
                   </div>
@@ -104,7 +101,7 @@ export default function MovieDetails({
               </div>
               <div className=" gap-3 col-span-2 p-2">
                 <p className="font-extralight">
-                  {movieDetailsData.budget === 0
+                  {movieDetailsData?.budget === 0
                     ? "Unknown"
                     : formatPrice(movieDetailsData?.budget)}
                 </p>
@@ -115,7 +112,7 @@ export default function MovieDetails({
               </div>
               <div className="col-span-2 p-2">
                 <p className="font-extralight">
-                  {movieDetailsData.revenue === 0
+                  {movieDetailsData?.revenue === 0
                     ? "Unknown"
                     : formatPrice(movieDetailsData?.revenue)}
                 </p>
@@ -130,7 +127,7 @@ export default function MovieDetails({
         <h3 className="font-bold text-2xl mb-4 text-white">Photos</h3>
         <div className="flex w-full justify-center">
           <div className="carousel carousel-center max-w-[90rem] space-x-4 rounded-box">
-            {englishOnlyImages.map((image, index) => (
+            {englishOnlyImages?.map((image, index) => (
               <div key={index} className="carousel-item h-[270px]">
                 <a
                   href={`https://image.tmdb.org/t/p/w780/${image.file_path}`}
