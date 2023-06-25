@@ -12,8 +12,6 @@ export default function MovieDetails({
   creditData,
   imagesData,
 }) {
-  const imageUrl = movieDetailsData?.poster_path;
-  const bgImg = `https://image.tmdb.org/t/p/w780/${movieDetailsData?.backdrop_path}`;
   const englishOnlyImages = imagesData?.backdrops?.filter(
     (image) => image.iso_639_1 === "en" || image.iso_639_1 === null
   );
@@ -22,20 +20,22 @@ export default function MovieDetails({
   return (
     <Layout>
       <section>
-        <Image
-          id="heroImg"
-          src={bgImg}
-          alt="bg-img"
-          fill
-          className="absolute top-0 left-0 -z-10 w-full brightness-50"
-          priority={true}
-        />
+        {movieDetailsData.backdrop_path && (
+          <Image
+            id="heroImg"
+            src={`https://image.tmdb.org/t/p/w780/${movieDetailsData?.backdrop_path}`}
+            alt="bg-img"
+            fill
+            className="absolute top-0 left-0 -z-10 w-full brightness-50"
+            priority={true}
+          />
+        )}
       </section>
 
       <section className="min-h-screen text-white grid grid-cols-[1fr,2fr,1fr] grid-row-1 justify-center mx-12 mt-40">
         <div className="flex justify-center items-start flex-col">
           <Image
-            src={`https://image.tmdb.org/t/p/w500/${imageUrl}`}
+            src={`https://image.tmdb.org/t/p/w500/${movieDetailsData?.poster_path}`}
             width={300}
             height={300}
             alt={movieDetailsData.title}

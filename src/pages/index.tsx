@@ -14,7 +14,6 @@ export default function Home(initialData) {
         <main
           className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
         >
-          <ModalSearch />
           <DisplayMovies
             moviesData={initialData.popularData}
             title={"Popular right now"}
