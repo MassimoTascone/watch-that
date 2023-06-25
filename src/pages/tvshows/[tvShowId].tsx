@@ -19,14 +19,16 @@ export default function MovieDetails({
   return (
     <Layout>
       <section>
-        <Image
-          id="heroImg"
-          src={bgImg}
-          alt="bg-img"
-          fill
-          className="absolute top-0 left-0 -z-10 w-full brightness-50"
-          priority={true}
-        />
+        {tvDetailsData.backdrop_path && (
+          <Image
+            id="heroImg"
+            src={bgImg}
+            alt="bg-img"
+            fill
+            className="absolute top-0 left-0 -z-10 w-full brightness-50"
+            priority={true}
+          />
+        )}
       </section>
 
       <section className="min-h-screen text-white grid grid-cols-[1fr,2fr,1fr] grid-row-1 justify-center mx-12 mt-40">

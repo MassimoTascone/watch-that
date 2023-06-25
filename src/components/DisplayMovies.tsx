@@ -5,6 +5,7 @@ import { ShowMediaInfos } from "./ShowMediaInfos";
 
 export default function DisplayMovies(moviesData) {
   const [hoveredMovieId, setHoveredMovieId] = useState(null);
+  const [movies, setmovies] = useState(moviesData.moviesData.results);
 
   const handleMouseOver = (movieId) => {
     setHoveredMovieId(movieId);
@@ -13,9 +14,6 @@ export default function DisplayMovies(moviesData) {
   const handleMouseOut = () => {
     setHoveredMovieId(null);
   };
-
-  const movies = moviesData.moviesData.results;
-  const imgUrl = "https://image.tmdb.org/t/p/w500/";
 
   return (
     <div className="mb-8">
@@ -34,7 +32,7 @@ export default function DisplayMovies(moviesData) {
                     onMouseOut={handleMouseOut}
                   >
                     <Image
-                      src={imgUrl + movie.poster_path}
+                      src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                       alt={movie.title}
                       width={200}
                       height={200}
