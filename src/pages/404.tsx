@@ -10,7 +10,7 @@ function Custom404() {
         <title>Error 404 | Watch That</title>
       </Head>
       <section className="min-h-screen flex justify-center">
-        <h1 className="text-white font-bold text-[500px] absolute select-none -z-10 top-2 font-sans">
+        <h1 className="text-white font-bold text-[160px] sm:text-[220px] lg:text-[500px] absolute select-none -z-10  top-20 lg:top-2 font-sans">
           404
         </h1>
         <div className="grid">
@@ -21,7 +21,7 @@ function Custom404() {
             width={550}
             height={350}
             alt="Confused Travolta Meme"
-            className="select-none"
+            className="select-none mt-10 lg:mt-0"
             priority={true}
           />
           <div>

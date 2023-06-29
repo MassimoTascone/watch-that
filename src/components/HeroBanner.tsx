@@ -6,7 +6,7 @@ interface HeroBannerProps {
 }
 
 export function HeroBanner({ moviesData }: HeroBannerProps) {
-  const bannerImg = `https://image.tmdb.org/t/p/original/${moviesData.results[4].backdrop_path}`;
+  const bannerImg = `https://image.tmdb.org/t/p/original//nniZPBIfrep9wbx0l1529RHXeD8.jpg`;
 
   return (
     <section className="h-auto mb-60">
@@ -17,6 +17,7 @@ export function HeroBanner({ moviesData }: HeroBannerProps) {
         width={1080}
         height={920}
         alt={moviesData.results[0].title}
+        unoptimized
       />
     </section>
   );

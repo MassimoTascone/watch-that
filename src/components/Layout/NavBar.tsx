@@ -71,12 +71,12 @@ export function NavBar() {
         <div className="navbar-center  lg:flex">
           <Link
             href={"/"}
-            className="btn btn-ghost normal-case hover:bg-transparent pl-[16px]  lg:hidden"
+            className="btn btn-ghost normal-case hover:bg-transparent pl-[16px] lg:hidden"
           >
             <Image
               src="/watchthat-logo.svg"
-              width={220}
-              height={220}
+              width={180}
+              height={240}
               alt="watchthat logo svg"
             />
           </Link>
