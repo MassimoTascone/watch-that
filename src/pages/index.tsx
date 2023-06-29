@@ -2,7 +2,6 @@ import { Inter } from "next/font/google";
 import DisplayMovies from "@/components/DisplayMovies";
 import { Layout } from "@/components/Layout/Layout";
 import { HeroBanner } from "@/components/HeroBanner";
-import { ModalSearch } from "@/components/ModalSearch";
 
 const inter = Inter({ subsets: ["latin"] });
 

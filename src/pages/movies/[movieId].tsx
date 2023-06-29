@@ -1,11 +1,12 @@
 import Image from "next/image";
 import { Layout } from "@/components/Layout/Layout";
-import { DisplayCasting } from "@/components/displayCasting";
+import { DisplayCasting } from "@/components/DisplayCasting";
 import {
   formatDate,
   formatDuration,
   formatPrice,
 } from "@/utils/formattingHelpers";
+import Head from "next/head";
 
 export default function MovieDetails({
   movieDetailsData,
@@ -19,6 +20,12 @@ export default function MovieDetails({
 
   return (
     <Layout>
+      <Head>
+        <title>
+          {movieDetailsData?.title} {formatDate(movieDetailsData?.release_date)}{" "}
+          | Movie | Watch That
+        </title>
+      </Head>
       <section>
         {movieDetailsData.backdrop_path && (
           <Image
@@ -33,12 +40,12 @@ export default function MovieDetails({
       </section>
 
       <section className="min-h-screen text-white grid grid-cols-[1fr,2fr,1fr] grid-row-1 justify-center mx-12 mt-40">
-        <div className="flex justify-center items-start flex-col">
+        <div className="flex items-start flex-col">
           <Image
             src={`https://image.tmdb.org/t/p/w500/${movieDetailsData?.poster_path}`}
             width={300}
             height={300}
-            alt={movieDetailsData.title}
+            alt={movieDetailsData?.title}
             priority={true}
             className="rounded-lg drop-shadow-lg"
           />

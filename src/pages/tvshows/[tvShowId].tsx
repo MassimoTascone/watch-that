@@ -2,7 +2,8 @@ import { Layout } from "@/components/Layout/Layout";
 import { useState } from "react";
 import Image from "next/image";
 import { formatDate } from "@/utils/formattingHelpers";
-import { DisplayCasting } from "@/components/displayCasting";
+import { DisplayCasting } from "@/components/DisplayCasting";
+import Head from "next/head";
 
 export default function MovieDetails({
   tvCreditData,
@@ -18,6 +19,12 @@ export default function MovieDetails({
 
   return (
     <Layout>
+      <Head>
+        <title>
+          {tvDetailsData?.name} {formatDate(tvDetailsData?.first_air_date)} | Tv
+          Shows | Watch That
+        </title>
+      </Head>
       <section>
         {tvDetailsData.backdrop_path && (
           <Image
@@ -32,7 +39,7 @@ export default function MovieDetails({
       </section>
 
       <section className="min-h-screen text-white grid grid-cols-[1fr,2fr,1fr] grid-row-1 justify-center mx-12 mt-40">
-        <div className="flex justify-center items-start">
+        <div className="flex items-start">
           <Image
             src={`https://image.tmdb.org/t/p/w500/${imageUrl}`}
             width={300}
