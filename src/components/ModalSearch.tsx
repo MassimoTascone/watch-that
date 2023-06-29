@@ -5,7 +5,7 @@ import Image from "next/image";
 import { formatDate } from "@/utils/formattingHelpers";
 import { SearchResult } from "@/types/searchResults.type";
 
-export function ModalSearch(searchResultsData: SearchResult) {
+export function ModalSearch(searchResultsData: any) {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([searchResultsData]);
 

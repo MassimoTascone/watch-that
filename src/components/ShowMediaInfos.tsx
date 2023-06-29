@@ -1,6 +1,7 @@
 import { movieDataType } from "@/types/movieData.type";
+import { allTvShowsType } from "@/types/allTvShows.type";
 interface ShowMediaInfosProps {
-  mediaData: movieDataType;
+  mediaData: any;
   movieId: number;
   hoveredMovieId: number | null;
 }

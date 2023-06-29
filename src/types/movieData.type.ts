@@ -19,4 +19,5 @@ export interface movieDataType {
   video: boolean;
   vote_average: number;
   vote_count: number;
+
 }
