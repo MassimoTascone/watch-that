@@ -68,6 +68,7 @@ export default function TvDetails({
             alt={tvDetailsData?.name}
             priority={true}
             className="rounded-lg drop-shadow-lg"
+            unoptimized
           />
         </div>
 

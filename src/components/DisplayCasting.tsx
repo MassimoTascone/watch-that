@@ -32,6 +32,7 @@ export function DisplayCasting({ castingList }: castingListProps) {
                     height={40}
                     alt={actor.name}
                     priority={true}
+                    unoptimized
                   />
                 ) : (
                   <svg

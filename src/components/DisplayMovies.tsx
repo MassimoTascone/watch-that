@@ -44,6 +44,7 @@ export default function DisplayMovies({
                       width={200}
                       height={200}
                       className="hover:brightness-50"
+                      unoptimized
                     />
                     <ShowMediaInfos
                       mediaData={movie}

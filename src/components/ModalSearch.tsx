@@ -13,7 +13,12 @@ export function ModalSearch(searchResultsData: any) {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
-    fetchSearchResults(event.target.value, setSearchResults);
+  };
+  const handleKeyDown = (event: any) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      fetchSearchResults(event.target.value, setSearchResults);
+    }
   };
   console.log(searchResults);
   return (
@@ -27,6 +32,7 @@ export function ModalSearch(searchResultsData: any) {
               className="input input-bordered  w-11/12 my-3 mx-3"
               value={searchTerm}
               onChange={handleChange}
+              onKeyDown={handleKeyDown}
             />
           </div>
 
@@ -52,6 +58,7 @@ export function ModalSearch(searchResultsData: any) {
                                 ? `movies/${result.id}`
                                 : `tvshows/${result.id}`
                             }
+                            replace
                           >
                             <div className="hover:bg-slate-700 p-1 w-full flex items-center justify-between">
                               {result.poster_path ? (
