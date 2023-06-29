@@ -3,16 +3,18 @@ import { fetchSearchResults } from "@/utils/searchResultsHelper";
 import Link from "next/link";
 import Image from "next/image";
 import { formatDate } from "@/utils/formattingHelpers";
+import { SearchResult } from "@/types/searchResults.type";
 
-export function ModalSearch(searchResultsData) {
+export function ModalSearch(searchResultsData: SearchResult) {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([searchResultsData]);
 
-  const handleChange = (event) => {
-    setSearchTerm(event.target.value);
-    fetchSearchResults(searchTerm, setSearchResults);
-  };
+  console.log({ searchResultsData });
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+    fetchSearchResults(event.target.value, setSearchResults);
+  };
   console.log(searchResults);
   return (
     <>

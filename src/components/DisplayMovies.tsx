@@ -2,12 +2,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { ShowMediaInfos } from "./ShowMediaInfos";
+import { MovieDataResponse } from "@/types/movieData.type";
 
-export default function DisplayMovies(moviesData) {
-  const [hoveredMovieId, setHoveredMovieId] = useState(null);
-  const [movies, setmovies] = useState(moviesData.moviesData.results);
+interface DisplayMoviesProps {
+  moviesData: MovieDataResponse;
+  title: string;
+}
 
-  const handleMouseOver = (movieId) => {
+export default function DisplayMovies({
+  moviesData,
+  title,
+}: DisplayMoviesProps) {
+  const [hoveredMovieId, setHoveredMovieId] = useState<number | null>(null);
+  const [movies, setmovies] = useState(moviesData.results);
+
+  const handleMouseOver = (movieId: number) => {
     setHoveredMovieId(movieId);
   };
 
@@ -17,9 +26,7 @@ export default function DisplayMovies(moviesData) {
 
   return (
     <div className="mb-8">
-      <h2 className="text-2xl font-sans font-bold text-white mb-4">
-        {moviesData?.title}
-      </h2>
+      <h2 className="text-2xl font-sans font-bold text-white mb-4">{title}</h2>
       <section>
         <div>
           <div className="carousel rounded-box gap-3">

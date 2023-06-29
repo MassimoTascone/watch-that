@@ -7,16 +7,26 @@ import {
   formatPrice,
 } from "@/utils/formattingHelpers";
 import Head from "next/head";
+import {
+  movieDetailsDataType,
+  creditDataType,
+  imagesDataType,
+} from "@/types/movieDetails.type";
+
+interface MovieDetailsProps {
+  movieDetailsData: movieDetailsDataType;
+  creditData: creditDataType;
+  imagesData: imagesDataType;
+}
 
 export default function MovieDetails({
   movieDetailsData,
   creditData,
   imagesData,
-}) {
+}: MovieDetailsProps) {
   const englishOnlyImages = imagesData?.backdrops?.filter(
     (image) => image.iso_639_1 === "en" || image.iso_639_1 === null
   );
-  console.log(movieDetailsData);
 
   return (
     <Layout>
@@ -61,10 +71,7 @@ export default function MovieDetails({
             className="rounded-lg drop-shadow-lg mb-5 lg:mb-0"
           />
           <div className="flex items-center w-full  justify-center lg:justify-normal">
-            <div
-              className="radial-progress text-white m-2"
-              style={{ "--value": movieDetailsData?.vote_average * 10 }}
-            >
+            <div className="text-white m-2">
               {Math.round(movieDetailsData?.vote_average * 10) / 10}
             </div>
             <div className="ml-5">
@@ -169,8 +176,7 @@ export default function MovieDetails({
   );
 }
 
-export const getServerSideProps = async (context) => {
-  console.log(context.query);
+export const getServerSideProps = async (context: any) => {
   const { movieId } = context.query;
 
   try {

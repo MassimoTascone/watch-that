@@ -1,6 +1,12 @@
 import Image from "next/image";
-export function HeroBanner(moviesData) {
-  const bannerImg = `https://image.tmdb.org/t/p/original/${moviesData.moviesData.results[4].backdrop_path}`;
+import { MovieDataResponse } from "@/types/movieData.type";
+
+interface HeroBannerProps {
+  moviesData: MovieDataResponse;
+}
+
+export function HeroBanner({ moviesData }: HeroBannerProps) {
+  const bannerImg = `https://image.tmdb.org/t/p/original/${moviesData.results[4].backdrop_path}`;
 
   return (
     <section className="h-auto mb-60">
@@ -10,7 +16,7 @@ export function HeroBanner(moviesData) {
         src={bannerImg}
         width={1080}
         height={920}
-        alt={moviesData.moviesData.results[0].title}
+        alt={moviesData.results[0].title}
       />
     </section>
   );

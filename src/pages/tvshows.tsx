@@ -2,12 +2,19 @@ import { Layout } from "@/components/Layout/Layout";
 import { useState } from "react";
 import { MediaListDisplay } from "@/components/MediaListDisplay";
 import { fetchMoreMedia } from "@/utils/loadMoreMediaHelper";
+import { allTvShowsType } from "@/types/allTvShows.type";
 
-export default function TvShows({ alltvShowsData }) {
+interface alltvShowsDataType {
+  alltvShowsData: {
+    results: allTvShowsType[];
+  };
+}
+
+export default function TvShows({ alltvShowsData }: alltvShowsDataType) {
   const [tvShows, setTvShows] = useState(alltvShowsData?.results);
   const [page, setPage] = useState(1);
 
-  console.log(alltvShowsData);
+  console.log({ alltvShowsData });
   return (
     <Layout>
       <section className="min-h-screen mb-20">
@@ -37,7 +44,7 @@ export default function TvShows({ alltvShowsData }) {
   );
 }
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async (context: any) => {
   const { page } = context.query;
   try {
     const resAlltvShows = await fetch(

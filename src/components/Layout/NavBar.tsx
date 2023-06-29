@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { ModalSearch } from "@/components/ModalSearch";
 
 const handleKeyDown = (e) => {

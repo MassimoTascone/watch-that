@@ -2,8 +2,17 @@ import { useState } from "react";
 import { Layout } from "@/components/Layout/Layout";
 import { MediaListDisplay } from "@/components/MediaListDisplay";
 import { fetchMoreMedia } from "@/utils/loadMoreMediaHelper";
+import { allMoviesType } from "@/types/allMovies.type";
 
-export default function Movies({ allMoviesData }) {
+interface allMoviesDataType {
+  allMoviesData: {
+    page: number;
+    results: allMoviesType[];
+  };
+}
+
+export default function Movies({ allMoviesData }: allMoviesDataType) {
+  console.log({ allMoviesData });
   const [movies, setMovies] = useState(allMoviesData?.results);
   const [page, setPage] = useState(1);
 
@@ -36,7 +45,7 @@ export default function Movies({ allMoviesData }) {
   );
 }
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async (context: any) => {
   const { page } = context.query;
   try {
     const resAllMovies = await fetch(

@@ -3,15 +3,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { movieDataType } from "@/types/movieData.type";
 import { ShowMediaInfos } from "./ShowMediaInfos";
+import { allTvShowsType } from "@/types/allTvShows.type";
 
 interface MediaListDisplayProps {
-  mediaData: movieDataType[];
+  mediaData: movieDataType[] | allTvShowsType[];
   mediaType: string;
 }
 interface MediaType {
   id: number;
   poster_path: string;
   title: string;
+  name: string;
 }
 
 export function MediaListDisplay({
@@ -38,7 +40,7 @@ export function MediaListDisplay({
           >
             <Image
               src={`https://image.tmdb.org/t/p/w500/${media.poster_path}`}
-              alt={media.title}
+              alt={media.title || media.name}
               width={200}
               height={200}
               className="hover:brightness-50 rounded-lg drop-shadow-lg"
