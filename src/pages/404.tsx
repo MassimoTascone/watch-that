@@ -1,10 +1,14 @@
 import { Layout } from "@/components/Layout/Layout";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
 function Custom404() {
   return (
     <Layout>
+      <Head>
+        <title>Error 404 | Watch That</title>
+      </Head>
       <section className="min-h-screen flex justify-center">
         <h1 className="text-white font-bold text-[500px] absolute select-none -z-10 top-2 font-sans">
           404
