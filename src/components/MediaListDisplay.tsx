@@ -22,7 +22,7 @@ export function MediaListDisplay({
 }: MediaListDisplayProps) {
   const [hoveredMovieId, setHoveredMovieId] = useState(null);
 
-  const handleMouseOver = (movieId: number) => {
+  const handleMouseOver = (movieId: any) => {
     setHoveredMovieId(movieId);
   };
   const handleMouseOut = () => {

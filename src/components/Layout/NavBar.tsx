@@ -3,7 +3,13 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { ModalSearch } from "@/components/ModalSearch";
 
-const handleKeyDown = (e) => {
+declare global {
+  interface Window {
+    my_modal_2: any;
+  }
+}
+
+const handleKeyDown = (e: any) => {
   if (e.keyCode === 75 && e.metaKey) {
     window.my_modal_2.showModal();
   }

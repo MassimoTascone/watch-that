@@ -17,7 +17,7 @@ export const fetchMoreMedia = async ({
     const res = await fetch(`/api/${apiRoute}?page=${page + 1}`);
     const data = await res.json();
     const newMedia = data.results;
-    setterMedia((prevMedia) => [...prevMedia, ...newMedia]);
+    setterMedia((prevMedia: any) => [...prevMedia, ...newMedia]);
     setterPage((prevPage) => prevPage + 1);
   } catch (error) {
     console.log("Error fetching movie data:", error);

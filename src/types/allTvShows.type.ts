@@ -12,4 +12,5 @@ export interface allTvShowsType {
     poster_path: string;
     vote_average: number;
     vote_count: number;
+    title: string,
 }
