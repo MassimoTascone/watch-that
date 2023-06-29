@@ -44,6 +44,7 @@ export function MediaListDisplay({
               width={200}
               height={200}
               className="hover:brightness-50 rounded-lg drop-shadow-lg"
+              unoptimized
               priority={true}
             />
             <ShowMediaInfos

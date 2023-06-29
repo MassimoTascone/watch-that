@@ -69,6 +69,7 @@ export default function MovieDetails({
             alt={movieDetailsData?.title}
             priority={true}
             className="rounded-lg drop-shadow-lg mb-5 lg:mb-0"
+            unoptimized
           />
           <div className="flex items-center w-full  justify-center lg:justify-normal">
             <div className="text-white m-2">
@@ -165,6 +166,7 @@ export default function MovieDetails({
                     width={500}
                     height={300}
                     priority={true}
+                    unoptimized
                   />
                 </a>
               </div>
