@@ -28,7 +28,7 @@ export function MediaListDisplay({
   };
   console.log(mediaData);
   return (
-    <div className="flex flex-wrap gap-5 justify-center my-10">
+    <div className="flex flex-wrap  gap-1 lg:gap-5 justify-center my-10">
       {mediaData?.map((media: MediaType) => (
         <Link href={`${mediaType}/${media.id}`} key={media.id}>
           <div

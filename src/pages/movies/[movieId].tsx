@@ -39,20 +39,31 @@ export default function MovieDetails({
         )}
       </section>
 
-      <section className="min-h-screen text-white grid grid-cols-[1fr,2fr,1fr] grid-row-1 justify-center mx-12 mt-40">
-        <div className="flex items-start flex-col">
+      <section className="min-h-screen text-white grid lg:grid-cols-[1fr,2fr,1fr] grid-row-1 justify-center mx-5 lg:mx-12  mt-10 lg:mt-40">
+        <div className="flex flex-col items-center justify-center lg:justify-normal">
+          <div className="mb-5 flex flex-col items-center lg:hidden">
+            <h2 className="text-3xl font-sans font-extrabold ">
+              {movieDetailsData?.title}
+              <span className="ml-2 font-extralight">
+                ({formatDate(movieDetailsData?.release_date)})
+              </span>
+            </h2>
+            <p className="font-sm italic font-extralight">
+              Original title: {movieDetailsData?.original_title}
+            </p>
+          </div>
           <Image
             src={`https://image.tmdb.org/t/p/w500/${movieDetailsData?.poster_path}`}
             width={300}
             height={300}
             alt={movieDetailsData?.title}
             priority={true}
-            className="rounded-lg drop-shadow-lg"
+            className="rounded-lg drop-shadow-lg mb-5 lg:mb-0"
           />
-          <div className="flex items-center w-full ">
+          <div className="flex items-center w-full  justify-center lg:justify-normal">
             <div
               className="radial-progress text-white m-2"
-              style={{ "--value": movieDetailsData.vote_average * 10 }}
+              style={{ "--value": movieDetailsData?.vote_average * 10 }}
             >
               {Math.round(movieDetailsData?.vote_average * 10) / 10}
             </div>
@@ -69,15 +80,15 @@ export default function MovieDetails({
           </div>
         </div>
 
-        <div className="p-3 mt-10 ml-10">
+        <div className="p-1 lg:p-3 lg:mt-10 ml-10">
           <div>
-            <h2 className="text-3xl font-sans font-extrabold ">
+            <h2 className="text-3xl font-sans font-extrabold hidden lg:block ">
               {movieDetailsData?.title}
               <span className="ml-2 font-extralight">
                 ({formatDate(movieDetailsData?.release_date)})
               </span>
             </h2>
-            <p className="font-sm italic font-extralight">
+            <p className="font-sm italic font-extralight hidden lg:block">
               Original title: {movieDetailsData?.original_title}
             </p>
             <div className="flex items-center gap-3 mt-10">

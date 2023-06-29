@@ -11,7 +11,7 @@ export default function Home(initialData) {
       <Layout>
         <HeroBanner moviesData={initialData.popularData} />
         <main
-          className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
+          className={`flex min-h-screen flex-col items-center justify-between p-5 lg:p-24 ${inter.className}`}
         >
           <DisplayMovies
             moviesData={initialData.popularData}
