@@ -1,4 +1,7 @@
-export const formatDate = (uglyDate: string) => {
+export const formatDate = (uglyDate: string | undefined) => {
+  if (!uglyDate) {
+    return ""; // Return an empty string or handle the case when the date is undefined
+  }
   const date = new Date(uglyDate);
   const readableDate = date.getUTCFullYear();
   return readableDate;

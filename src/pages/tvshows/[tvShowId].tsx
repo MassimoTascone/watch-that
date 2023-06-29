@@ -4,15 +4,25 @@ import Image from "next/image";
 import { formatDate } from "@/utils/formattingHelpers";
 import { DisplayCasting } from "@/components/DisplayCasting";
 import Head from "next/head";
+import {
+  tvCreditDataType,
+  tvDetailsDataType,
+  tvImagesDataType,
+} from "@/types/tvshowsData.type";
+interface TvDetailsType {
+  tvCreditData: tvCreditDataType;
+  tvDetailsData: tvDetailsDataType;
+  tvImagesData: tvImagesDataType;
+}
 
-export default function MovieDetails({
+export default function TvDetails({
   tvCreditData,
   tvDetailsData,
   tvImagesData,
-}) {
-  console.log(tvCreditData?.cast);
-  console.log(tvDetailsData);
-  console.log(tvImagesData);
+}: TvDetailsType) {
+  console.log({ tvCreditData });
+  console.log({ tvDetailsData });
+  console.log({ tvImagesData });
 
   const imageUrl = tvDetailsData?.poster_path;
   const bgImg = `https://image.tmdb.org/t/p/w780/${tvDetailsData?.backdrop_path}`;
@@ -140,7 +150,7 @@ export default function MovieDetails({
   );
 }
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async (context: any) => {
   console.log(context.query);
   const { tvShowId } = context.query;
 
