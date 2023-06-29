@@ -55,8 +55,8 @@ export function ModalSearch(searchResultsData: any) {
                           <Link
                             href={
                               result.media_type === "movie"
-                                ? `movies/${result.id}`
-                                : `tvshows/${result.id}`
+                                ? `/movies/${result.id}`
+                                : `/tvshows/${result.id}`
                             }
                             replace
                           >
