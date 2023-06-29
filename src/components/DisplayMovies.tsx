@@ -18,7 +18,7 @@ export default function DisplayMovies(moviesData) {
   return (
     <div className="mb-8">
       <h2 className="text-2xl font-sans font-bold text-white mb-4">
-        {moviesData.title}
+        {moviesData?.title}
       </h2>
       <section>
         <div>

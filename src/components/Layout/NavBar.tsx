@@ -19,7 +19,7 @@ export function NavBar() {
 
   return (
     <>
-      <nav className="navbar text-white bg-transparent px-10 xl:px-24 lg:px-15">
+      <nav className="navbar text-white bg-transparent xl:px-24 lg:px-15">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
