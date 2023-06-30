@@ -42,7 +42,7 @@ export default function TvDetails({
             src={bgImg}
             alt="bg-img"
             fill
-            className="absolute top-0 left-0 -z-10 w-full brightness-50"
+            className="absolute top-0 left-0 -z-10 w-screen h-auto brightness-50"
             priority={true}
             unoptimized
           />

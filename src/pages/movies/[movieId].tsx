@@ -43,7 +43,7 @@ export default function MovieDetails({
             src={`https://image.tmdb.org/t/p/w780/${movieDetailsData?.backdrop_path}`}
             alt="bg-img"
             fill
-            className="absolute top-0 left-0 -z-10 w-full brightness-50"
+            className="absolute top-0 left-0 -z-10 w-screen h-auto brightness-50"
             priority={true}
             unoptimized
           />
