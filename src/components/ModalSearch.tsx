@@ -69,6 +69,7 @@ export function ModalSearch(searchResultsData: any) {
                                   height={40}
                                   className="mr-5 p-1"
                                   priority={true}
+                                  unoptimized
                                 />
                               ) : (
                                 <svg

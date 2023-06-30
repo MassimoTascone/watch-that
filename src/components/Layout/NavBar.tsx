@@ -65,6 +65,7 @@ export function NavBar() {
               width={220}
               height={220}
               alt="watchthat logo svg"
+              unoptimized
             />
           </Link>
         </div>
@@ -78,6 +79,7 @@ export function NavBar() {
               width={180}
               height={240}
               alt="watchthat logo svg"
+              unoptimized
             />
           </Link>
         </div>

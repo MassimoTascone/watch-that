@@ -23,6 +23,7 @@ function Custom404() {
             alt="Confused Travolta Meme"
             className="select-none mt-10 lg:mt-0"
             priority={true}
+            unoptimized
           />
           <div>
             <div className="mb-10">

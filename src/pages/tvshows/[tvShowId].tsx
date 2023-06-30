@@ -44,6 +44,7 @@ export default function TvDetails({
             fill
             className="absolute top-0 left-0 -z-10 w-full brightness-50"
             priority={true}
+            unoptimized
           />
         )}
       </section>
