@@ -20,10 +20,6 @@ export default function TvDetails({
   tvDetailsData,
   tvImagesData,
 }: TvDetailsType) {
-  console.log({ tvCreditData });
-  console.log({ tvDetailsData });
-  console.log({ tvImagesData });
-
   const imageUrl = tvDetailsData?.poster_path;
   const bgImg = `https://image.tmdb.org/t/p/w780/${tvDetailsData?.backdrop_path}`;
 
@@ -153,7 +149,6 @@ export default function TvDetails({
 }
 
 export const getServerSideProps = async (context: any) => {
-  console.log(context.query);
   const { tvShowId } = context.query;
 
   try {

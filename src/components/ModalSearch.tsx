@@ -20,7 +20,6 @@ export function ModalSearch(searchResultsData: any) {
       fetchSearchResults(event.target.value, setSearchResults);
     }
   };
-  console.log(searchResults);
   return (
     <>
       <dialog id="my_modal_2" className="modal">

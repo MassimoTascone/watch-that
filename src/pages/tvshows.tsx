@@ -14,7 +14,6 @@ export default function TvShows({ alltvShowsData }: alltvShowsDataType) {
   const [tvShows, setTvShows] = useState(alltvShowsData?.results);
   const [page, setPage] = useState(1);
 
-  console.log({ alltvShowsData });
   return (
     <Layout>
       <section className="min-h-screen mb-20">

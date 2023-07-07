@@ -12,7 +12,6 @@ interface allMoviesDataType {
 }
 
 export default function Movies({ allMoviesData }: allMoviesDataType) {
-  console.log({ allMoviesData });
   const [movies, setMovies] = useState(allMoviesData?.results);
   const [page, setPage] = useState(1);
 
