@@ -28,7 +28,6 @@ export function MediaListDisplay({
   const handleMouseOut = () => {
     setHoveredMovieId(null);
   };
-  console.log(mediaData);
   return (
     <div className="flex flex-wrap  gap-1 lg:gap-5 justify-center my-10">
       {mediaData?.map((media: MediaType) => (
