@@ -1,5 +1,3 @@
-import { allMoviesType } from "@/types/allMovies.type";
-
 interface fetchMoreMediaProps {
   page: number;
   setterMedia: React.Dispatch<React.SetStateAction<any | null>>;

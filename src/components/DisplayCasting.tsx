@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useState } from "react";
 
 interface castingListProps {
   castingList: {
@@ -17,11 +18,26 @@ interface castingListProps {
 }
 
 export function DisplayCasting({ castingList }: castingListProps) {
+  const [castNbrDisplayed, setCastNbrDisplayed] = useState(5);
+  const [viewMoreClicked, setViewMoreClicked] = useState(false);
+
+  console.log(castingList);
+
+  const loadMoreCast = () => {
+    setCastNbrDisplayed(castingList.length);
+    setViewMoreClicked(true);
+  };
+
+  const showLessCast = () => {
+    setCastNbrDisplayed(5);
+    setViewMoreClicked(false);
+  };
+
   return (
     <div className="p-3 ml-10 mt-10">
       <h2 className="font-bold text-2xl">Cast</h2>
-      <ul>
-        {castingList?.slice(0, 10).map((actor) => (
+      <ul className="overflow-auto max-h-[450px]">
+        {castingList?.slice(0, castNbrDisplayed).map((actor) => (
           <li key={actor.id} className="flex items-center my-4">
             <div className="avatar">
               <div className="w-12 rounded-full">
@@ -56,7 +72,14 @@ export function DisplayCasting({ castingList }: castingListProps) {
             </div>
           </li>
         ))}
-        <li>...</li>
+        <div className="flex justify-center">
+          <button
+            className="btn btn-xs btn-outline btn-accent"
+            onClick={viewMoreClicked ? showLessCast : loadMoreCast}
+          >
+            {viewMoreClicked ? "Show Less" : "View More"}
+          </button>
+        </div>
       </ul>
     </div>
   );
