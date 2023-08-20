@@ -9,8 +9,6 @@ export function ModalSearch(searchResultsData: any) {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([searchResultsData]);
 
-  console.log({ searchResultsData });
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };

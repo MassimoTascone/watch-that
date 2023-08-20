@@ -21,8 +21,6 @@ export function DisplayCasting({ castingList }: castingListProps) {
   const [castNbrDisplayed, setCastNbrDisplayed] = useState(5);
   const [viewMoreClicked, setViewMoreClicked] = useState(false);
 
-  console.log(castingList);
-
   const loadMoreCast = () => {
     setCastNbrDisplayed(castingList.length);
     setViewMoreClicked(true);
