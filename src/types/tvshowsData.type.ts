@@ -90,16 +90,3 @@ export interface tvDetailsDataType {
     vote_average: number;
     vote_count: number;
   }
-export interface tvImagesDataType{
-    backdrops: backdropsTvType,
-    id: number,
-}
-interface backdropsTvType {
-    aspect_ratio: number;
-    file_path: string;
-    height: number;
-    iso_639_1: string | null;
-    vote_average: number;
-    vote_count: number;
-    width: number;
-}

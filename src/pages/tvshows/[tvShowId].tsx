@@ -1,18 +1,16 @@
 import { Layout } from "@/components/Layout/Layout";
-import { useState } from "react";
 import Image from "next/image";
 import { formatDate } from "@/utils/formattingHelpers";
 import { DisplayCasting } from "@/components/DisplayCasting";
+import { DisplayMediaImages } from "@/components/DisplayMediaImages";
 import Head from "next/head";
-import {
-  tvCreditDataType,
-  tvDetailsDataType,
-  tvImagesDataType,
-} from "@/types/tvshowsData.type";
+import { tvCreditDataType, tvDetailsDataType } from "@/types/tvshowsData.type";
+import { ImagesDataType } from "@/types/imagesData.type";
+
 interface TvDetailsType {
   tvCreditData: tvCreditDataType;
   tvDetailsData: tvDetailsDataType;
-  tvImagesData: tvImagesDataType;
+  tvImagesData: ImagesDataType;
 }
 
 export default function TvDetails({
@@ -144,6 +142,8 @@ export default function TvDetails({
         </div>
         <DisplayCasting castingList={tvCreditData.cast} />
       </section>
+
+      <DisplayMediaImages imagesData={tvImagesData} />
     </Layout>
   );
 }
