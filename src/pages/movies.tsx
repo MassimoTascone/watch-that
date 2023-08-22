@@ -37,7 +37,7 @@ export default function Movies({ allMoviesData }: allMoviesDataType) {
     <Layout>
       <section className="min-h-screen mb-20">
         <div>
-          <h2 className="text-center font-bold text-white text-2xl sm:text-5xl mb-4">
+          <h2 className="text-center font-bold text-white text-2xl sm:text-5xl mb-4 uppercase">
             Movies
           </h2>
           <div className="flex justify-center">
