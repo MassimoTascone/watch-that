@@ -1,12 +1,14 @@
 import { Layout } from "@/components/Layout/Layout";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MediaListDisplay } from "@/components/MediaListDisplay";
 import { fetchMoreMedia } from "@/utils/loadMoreMediaHelper";
 import { allTvShowsType } from "@/types/allTvShows.type";
+import { Pagination } from "@/components/Pagination";
 
 interface alltvShowsDataType {
   alltvShowsData: {
     results: allTvShowsType[];
+    total_pages: number;
   };
 }
 
@@ -14,28 +16,38 @@ export default function TvShows({ alltvShowsData }: alltvShowsDataType) {
   const [tvShows, setTvShows] = useState(alltvShowsData?.results);
   const [page, setPage] = useState(1);
 
+  const handlePageChange = (newValue: number) => {
+    setPage(newValue);
+  };
+
+  useEffect(() => {
+    fetchMoreMedia({
+      page: page,
+      setterMedia: setTvShows,
+      setterPage: setPage,
+      apiRoute: "getTvShows",
+    });
+  }, [page]);
+
   return (
     <Layout>
       <section className="min-h-screen mb-20">
         <div>
-          <h2 className="text-center font-bold text-white text-2xl mb-4">
-            All Tv Shows
+          <h2 className="text-center font-bold text-white text-2xl sm:text-5xl mb-4 uppercase">
+            Tv Shows
           </h2>
+          <div className="flex justify-center">
+            <Pagination
+              IncomingTotalPages={alltvShowsData.total_pages}
+              handlePageChange={handlePageChange}
+            />
+          </div>
           <MediaListDisplay mediaData={tvShows} mediaType={"tvshows"} />
           <div className="flex justify-center">
-            <button
-              className="btn btn-outline btn-accent"
-              onClick={() =>
-                fetchMoreMedia({
-                  page,
-                  setterMedia: setTvShows,
-                  setterPage: setPage,
-                  apiRoute: "getTvShows",
-                })
-              }
-            >
-              View More
-            </button>
+            <Pagination
+              IncomingTotalPages={alltvShowsData.total_pages}
+              handlePageChange={handlePageChange}
+            />
           </div>
         </div>
       </section>

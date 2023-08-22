@@ -1,19 +1,37 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Layout } from "@/components/Layout/Layout";
 import { MediaListDisplay } from "@/components/MediaListDisplay";
 import { fetchMoreMedia } from "@/utils/loadMoreMediaHelper";
 import { allMoviesType } from "@/types/allMovies.type";
+import { Pagination } from "@/components/Pagination";
 
 interface allMoviesDataType {
   allMoviesData: {
     page: number;
     results: allMoviesType[];
+    total_pages: number;
   };
 }
 
 export default function Movies({ allMoviesData }: allMoviesDataType) {
   const [movies, setMovies] = useState(allMoviesData?.results);
   const [page, setPage] = useState(1);
+
+  console.log({ page });
+
+  const handlePageChange = (newValue: number) => {
+    console.log({ newValue });
+    setPage(newValue);
+  };
+
+  useEffect(() => {
+    fetchMoreMedia({
+      page: page,
+      setterMedia: setMovies,
+      setterPage: setPage,
+      apiRoute: "getMovies",
+    });
+  }, [page]);
 
   return (
     <Layout>
@@ -22,21 +40,18 @@ export default function Movies({ allMoviesData }: allMoviesDataType) {
           <h2 className="text-center font-bold text-white text-2xl mb-4">
             All Movies
           </h2>
+          <div className="flex justify-center">
+            <Pagination
+              IncomingTotalPages={allMoviesData.total_pages}
+              handlePageChange={handlePageChange}
+            />
+          </div>
           <MediaListDisplay mediaData={movies} mediaType={"movies"} />
           <div className="flex justify-center">
-            <button
-              className="btn btn-outline btn-accent"
-              onClick={() =>
-                fetchMoreMedia({
-                  page,
-                  setterMedia: setMovies,
-                  setterPage: setPage,
-                  apiRoute: "getMovies",
-                })
-              }
-            >
-              View More
-            </button>
+            <Pagination
+              IncomingTotalPages={allMoviesData.total_pages}
+              handlePageChange={handlePageChange}
+            />
           </div>
         </div>
       </section>
