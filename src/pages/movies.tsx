@@ -47,12 +47,6 @@ export default function Movies({ allMoviesData }: allMoviesDataType) {
             />
           </div>
           <MediaListDisplay mediaData={movies} mediaType={"movies"} />
-          <div className="flex justify-center">
-            <Pagination
-              IncomingTotalPages={allMoviesData.total_pages}
-              handlePageChange={handlePageChange}
-            />
-          </div>
         </div>
       </section>
     </Layout>

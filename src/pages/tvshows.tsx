@@ -43,12 +43,6 @@ export default function TvShows({ alltvShowsData }: alltvShowsDataType) {
             />
           </div>
           <MediaListDisplay mediaData={tvShows} mediaType={"tvshows"} />
-          <div className="flex justify-center">
-            <Pagination
-              IncomingTotalPages={alltvShowsData.total_pages}
-              handlePageChange={handlePageChange}
-            />
-          </div>
         </div>
       </section>
     </Layout>
