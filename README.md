@@ -29,7 +29,7 @@ Simply click on the provided link, and it will take you to the live version of t
 - Browse and search for a wide variety of movies and TV shows using keywords.
 - Show more content when searching for keywords (show more button).
 - View detailed information about each movie or TV show, including the cast, release date, rating, etc.
-- See more images (if available) for selected movies/tv-shows.
+- Pagination for browsing all movies
 - Responsive and user-friendly interface for seamless browsing and navigation.
 
 ## Technologies Used
@@ -56,3 +56,5 @@ The **frontend** application is deployed on [Vercel](https://vercel.com/), a clo
 - [ ] Authentification to login
 - [ ] Create a "add to favorite" button to create playlist
 - [ ] Add a actor detailed page and allow user to search for Actors
+- [X] Implement pagination for movies & tv shows pages
+- [ ] Filters on all movies and all tv shows page
