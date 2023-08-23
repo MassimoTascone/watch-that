@@ -47,7 +47,7 @@ Simply click on the provided link, and it will take you to the live version of t
 
 ## Deployment
 
-The **frontend** application is deployed on [Vercel](https://vercel.com/), a cloud platform for hosting static websites.
+The whole application is deployed on [Vercel](https://vercel.com/), a cloud platform for hosting static websites.
 
 ## Things to Improve
 
