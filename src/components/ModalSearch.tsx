@@ -8,6 +8,7 @@ import { SearchResult } from "@/types/searchResults.type";
 export function ModalSearch(searchResultsData: any) {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([searchResultsData]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
@@ -15,9 +16,10 @@ export function ModalSearch(searchResultsData: any) {
   const handleKeyDown = (event: any) => {
     if (event.key === "Enter") {
       event.preventDefault();
-      fetchSearchResults(event.target.value, setSearchResults);
+      fetchSearchResults(event.target.value, setSearchResults, setIsLoading);
     }
   };
+
   return (
     <>
       <dialog id="my_modal_2" className="modal">
@@ -26,20 +28,23 @@ export function ModalSearch(searchResultsData: any) {
             <input
               type="text"
               placeholder="Search a movie or tv-show"
-              className="input input-bordered  w-11/12 my-3 mx-3"
+              className="input input-bordered  w-11/12 my-3 mx-1"
               value={searchTerm}
               onChange={handleChange}
               onKeyDown={handleKeyDown}
             />
           </div>
-
-          {searchResults?.length > 1 && (
-            <div>
-              <h4 className="font-bold text-white uppercase ml-3 mb-2 ">
-                Search Results
-              </h4>
+          {isLoading ? (
+            <div className="flex justify-center">
+              <span className="loading loading-infinity loading-lg text-success"></span>
+            </div>
+          ) : (
+            searchResults?.length > 1 && (
               <div>
-                <ul>
+                <h4 className="font-bold text-white uppercase ml-3 mb-2 ">
+                  Search Results
+                </h4>
+                <div>
                   <ul>
                     {searchResults
                       ?.filter(
@@ -65,7 +70,6 @@ export function ModalSearch(searchResultsData: any) {
                                   width={60}
                                   height={40}
                                   className="mr-5 p-1"
-                                  priority={true}
                                   unoptimized
                                 />
                               ) : (
@@ -75,9 +79,9 @@ export function ModalSearch(searchResultsData: any) {
                                   width="50px"
                                   version="1.1"
                                   viewBox="-300 -300 600 600"
-                                  font-family="Bitstream Vera Sans,Liberation Sans, Arial, sans-serif"
-                                  font-size="72"
-                                  text-anchor="middle"
+                                  fontFamily="Bitstream Vera Sans,Liberation Sans, Arial, sans-serif"
+                                  fontSize="72"
+                                  textAnchor="middle"
                                   className="mr-5 my-4"
                                 >
                                   <circle
@@ -129,9 +133,9 @@ export function ModalSearch(searchResultsData: any) {
                         </li>
                       ))}
                   </ul>
-                </ul>
+                </div>
               </div>
-            </div>
+            )
           )}
         </form>
         <form method="dialog" className="modal-backdrop bg-[#1D232Acc]">

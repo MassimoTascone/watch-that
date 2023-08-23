@@ -3,6 +3,7 @@ import Image from "next/image";
 import { formatDate } from "@/utils/formattingHelpers";
 import { DisplayCasting } from "@/components/DisplayCasting";
 import { DisplayMediaImages } from "@/components/DisplayMediaImages";
+import { Reviews } from "@/components/Reviews";
 import Head from "next/head";
 import { tvCreditDataType, tvDetailsDataType } from "@/types/tvshowsData.type";
 import { ImagesDataType } from "@/types/imagesData.type";
@@ -43,7 +44,7 @@ export default function TvDetails({
         )}
       </section>
 
-      <section className="min-h-screen text-white grid lg:grid-cols-[1fr,2fr,1fr] grid-row-1 justify-center mx-5 lg:mx-12  mt-10 lg:mt-40">
+      <section className="text-white grid lg:grid-cols-[1fr,2fr,1fr] grid-row-1 justify-center mx-5 lg:mx-12  mt-10 lg:mt-40">
         <div className="flex flex-col items-center justify-center lg:justify-normal">
           <div className="mb-5 flex flex-col items-center lg:hidden">
             <h2 className="text-3xl font-sans font-extrabold ">
@@ -62,8 +63,12 @@ export default function TvDetails({
             height={300}
             alt={tvDetailsData?.name}
             priority={true}
-            className="rounded-lg drop-shadow-lg"
+            className="rounded-lg drop-shadow-lg mb-5 lg:mb-2"
             unoptimized
+          />
+          <Reviews
+            voteAverage={tvDetailsData?.vote_average}
+            voteCount={tvDetailsData?.vote_count}
           />
         </div>
 
@@ -142,7 +147,6 @@ export default function TvDetails({
         </div>
         <DisplayCasting castingList={tvCreditData.cast} />
       </section>
-
       <DisplayMediaImages imagesData={tvImagesData} />
     </Layout>
   );

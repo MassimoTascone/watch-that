@@ -11,7 +11,6 @@ export default async function resultsHandler(
     );
     const searchResults = await searchMedia.json();
     console.log({ searchResults });
-
     res.status(200).json(searchResults);
   } catch (error) {
     console.log("Error fetching movie data:", error);
