@@ -17,10 +17,7 @@ export default function Movies({ allMoviesData }: allMoviesDataType) {
   const [movies, setMovies] = useState(allMoviesData?.results);
   const [page, setPage] = useState(1);
 
-  console.log({ page });
-
   const handlePageChange = (newValue: number) => {
-    console.log({ newValue });
     setPage(newValue);
   };
 

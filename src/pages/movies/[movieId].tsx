@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Layout } from "@/components/Layout/Layout";
 import { DisplayCasting } from "@/components/DisplayCasting";
 import { DisplayMediaImages } from "@/components/DisplayMediaImages";
+import { Reviews } from "@/components/Reviews";
 import Head from "next/head";
 import {
   formatDate,
@@ -47,7 +48,7 @@ export default function MovieDetails({
         )}
       </section>
 
-      <section className="min-h-screen text-white grid lg:grid-cols-[1fr,2fr,1fr] grid-row-1 justify-center mx-5 lg:mx-12  mt-10 lg:mt-40">
+      <section className="text-white grid lg:grid-cols-[1fr,2fr,1fr] grid-row-1 justify-center mx-5 lg:mx-12  mt-10 lg:mt-40">
         <div className="flex flex-col items-center justify-center lg:justify-normal">
           <div className="mb-5 flex flex-col items-center lg:hidden">
             <h2 className="text-3xl font-sans font-extrabold ">
@@ -66,24 +67,13 @@ export default function MovieDetails({
             height={300}
             alt={movieDetailsData?.title}
             priority={true}
-            className="rounded-lg drop-shadow-lg mb-5 lg:mb-0"
+            className="rounded-lg drop-shadow-lg mb-5 lg:mb-2"
             unoptimized
           />
-          <div className="flex items-center w-full  justify-center lg:justify-normal">
-            <div className="text-white m-2">
-              {Math.round(movieDetailsData?.vote_average * 10) / 10}
-            </div>
-            <div className="ml-5">
-              <p>
-                {movieDetailsData?.vote_average}{" "}
-                <span className="font-extralight">ratings</span>
-              </p>
-              <p>
-                {movieDetailsData?.vote_count}{" "}
-                <span className="font-extralight">reviews</span>
-              </p>
-            </div>
-          </div>
+          <Reviews
+            voteAverage={movieDetailsData?.vote_average}
+            voteCount={movieDetailsData?.vote_count}
+          />
         </div>
 
         <div className="p-1 lg:p-3 lg:mt-10 ml-10">
