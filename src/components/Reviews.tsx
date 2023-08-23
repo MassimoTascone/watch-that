@@ -17,9 +17,9 @@ export function Reviews({ voteAverage, voteCount }: ReviewsProps) {
             "--thickness": "4px",
           }}
         >
-          <span className="text-white text-bold">
+          <span className="text-white font-bold text-xl">
             {" "}
-            {Math.round(voteAverage * 10) / 10}/10
+            {Math.round(voteAverage * 10) / 10}
           </span>
         </div>
       </div>
