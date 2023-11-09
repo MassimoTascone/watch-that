@@ -1,5 +1,5 @@
-import { movieDataType } from "@/types/movieData.type";
-import { allTvShowsType } from "@/types/allTvShows.type";
+import { formatRatings } from "@/utils/formattingHelpers";
+
 interface ShowMediaInfosProps {
   mediaData: any;
   movieId: number;
@@ -22,7 +22,7 @@ export function ShowMediaInfos({
       </div>
 
       <div className="badge badge-accent absolute top-2 right-1 font-bold">
-        {mediaData.vote_average}
+        {formatRatings(mediaData.vote_average)}
       </div>
     </>
   );

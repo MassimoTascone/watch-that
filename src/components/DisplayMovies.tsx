@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { ShowMediaInfos } from "./ShowMediaInfos";
 import { MovieDataResponse } from "@/types/movieData.type";
+import { CarouselActionButtons } from "@/components/CarouselActionButtons";
 
 interface DisplayMoviesProps {
   moviesData: MovieDataResponse;
@@ -15,6 +16,7 @@ export default function DisplayMovies({
 }: DisplayMoviesProps) {
   const [hoveredMovieId, setHoveredMovieId] = useState<number | null>(null);
   const [movies, setmovies] = useState(moviesData.results);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
   const handleMouseOver = (movieId: number) => {
     setHoveredMovieId(movieId);
@@ -28,8 +30,8 @@ export default function DisplayMovies({
     <div className="mb-8">
       <h2 className="text-2xl font-sans font-bold text-white mb-4">{title}</h2>
       <section>
-        <div>
-          <div className="carousel rounded-box gap-3">
+        <div className="relative">
+          <div className="carousel rounded-box gap-3" ref={carouselRef}>
             {movies?.map((movie) => (
               <div className="carousel-item" key={movie.id}>
                 <Link href={`movies/${movie.id}`}>
@@ -56,6 +58,7 @@ export default function DisplayMovies({
               </div>
             ))}
           </div>
+          {movies && <CarouselActionButtons carouselRef={carouselRef} />}
         </div>
       </section>
     </div>

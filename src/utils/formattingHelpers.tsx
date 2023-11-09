@@ -20,3 +20,10 @@ export const formatPrice = (uglyPrice: number) => {
   });
   return USDollar.format(uglyPrice);
 };
+
+export const formatRatings = (uglyRating: number) => {
+  // Only 1 number after comma
+  const roundedRating = uglyRating.toFixed(1);
+  const rounded = Number(roundedRating);
+  return rounded;
+};
