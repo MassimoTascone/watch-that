@@ -1,8 +1,8 @@
-import { Inter } from "next/font/google";
-import DisplayMovies from "@/components/DisplayMovies";
-import { Layout } from "@/components/Layout/Layout";
-import { HeroBanner } from "@/components/HeroBanner";
-import { MovieDataResponse } from "@/types/movieData.type";
+import { Inter } from 'next/font/google';
+import DisplayMovies from '@/components/DisplayMovies';
+import { Layout } from '@/components/Layout/Layout';
+import { HeroBanner } from '@/components/HeroBanner';
+import { MovieDataResponse } from '@/types/movieData.type';
 
 interface InitialDataProps {
   popularData: MovieDataResponse;
@@ -10,7 +10,7 @@ interface InitialDataProps {
   topRatedData: MovieDataResponse;
 }
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export default function Home({
   popularData,
@@ -24,9 +24,9 @@ export default function Home({
         <main
           className={`flex min-h-screen flex-col items-center justify-between p-5 lg:p-24 ${inter.className}`}
         >
-          <DisplayMovies moviesData={popularData} title={"Popular right now"} />
-          <DisplayMovies moviesData={upcomingData} title={"Upcoming Movies"} />
-          <DisplayMovies moviesData={topRatedData} title={"Best rated"} />
+          <DisplayMovies moviesData={popularData} title={'Popular right now'} />
+          <DisplayMovies moviesData={upcomingData} title={'Upcoming Movies'} />
+          <DisplayMovies moviesData={topRatedData} title={'Best rated'} />
         </main>
       </Layout>
     </>
@@ -51,11 +51,9 @@ export const getServerSideProps = async () => {
     const upcomingData = await upcomingRes.json();
     const topRatedData = await topRatedRes.json();
 
-    console.log({ popularData, upcomingData, topRatedData });
-
     return { props: { popularData, upcomingData, topRatedData } };
   } catch (error) {
-    console.log("Error fetching movie data:", error);
+    console.log('Error fetching movie data:', error);
     return {
       props: { popularData: null, upcomingData: null, topRatedData: null },
     };
